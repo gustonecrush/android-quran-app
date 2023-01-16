@@ -102,7 +102,7 @@ data class DataSajda(
 
 data class DataAudio(
 
-    @field:SerializedName("audio")
-    val audio: String? = null,
+    @field:SerializedName("url")
+    val url: String? = null,
 
 )

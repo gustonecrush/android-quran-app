@@ -69,6 +69,15 @@
                 android:layout_marginRight="15dp"
                 />
 
+            <ImageView
+                android:id="@+id/btn_pause"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_pause"
+                android:layout_marginRight="15dp"
+                android:visibility="gone"
+                />
+
             <!-- Button Share -->
             <ImageView
                 android:id="@+id/btn_bookmark"

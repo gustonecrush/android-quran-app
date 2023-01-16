@@ -111,19 +111,19 @@
 
     </RelativeLayout>
 
-    <!-- Collections -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
+<!--    &lt;!&ndash; Collections &ndash;&gt;-->
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:scrollbars="none">-->
 
-        <androidx.recyclerview.widget.RecyclerView
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:id="@+id/rv_collections" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            xmlns:tools="http://schemas.android.com/tools"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:id="@+id/rv_collections" />-->
 
-    </ScrollView>
+<!--    </ScrollView>-->
 
 </LinearLayout>

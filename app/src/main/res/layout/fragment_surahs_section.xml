@@ -13,7 +13,6 @@
         >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rv_surahs" />
@@ -21,6 +20,7 @@
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="match_parent"
+            android:theme="@style/CustomProgressBar"
             android:layout_height="48dp" />
 
     </LinearLayout>

@@ -24,4 +24,8 @@
         <item name="textAllCaps">false</item>
         <item name="fontFamily">@font/poppins_semibold</item>
     </style>
+
+    <style name="CustomProgressBar" parent="android:Widget.ProgressBar">
+        <item name="colorAccent">@color/primary2</item>
+    </style>
 </resources>
