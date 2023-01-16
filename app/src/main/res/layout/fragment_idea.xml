@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/idea"
+    android:layout_marginHorizontal="30dp"
+    tools:context=".Fragments.IdeaFragment">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="25dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <!-- Menu and App's Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Menu Icon -->
+            <ImageView
+                android:id="@+id/menuSidebar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu"
+                android:layout_gravity="center_vertical"
+                />
+
+            <!-- App Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Insights"
+                android:textColor="@color/primary2"
+                android:textSize="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <!-- Search Icon -->
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+</FrameLayout>

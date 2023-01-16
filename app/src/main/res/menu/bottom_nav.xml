@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Qurans"
+        android:id="@+id/qurans"
+        android:icon="@drawable/ic_quran_active"
+        />
+    <item
+        android:title="Insight"
+        android:id="@+id/insight"
+        android:icon="@drawable/ic_idea"
+        />
+    <item
+        android:title="Pray"
+        android:id="@+id/pray"
+        android:icon="@drawable/ic_pray"
+        />
+    <item
+        android:title="Shalat"
+        android:id="@+id/shalat"
+        android:icon="@drawable/ic_shalat"
+        />
+    <item
+        android:title="Bookmark"
+        android:id="@+id/bookmark"
+        android:icon="@drawable/ic_bookmark"
+        />
+</menu>

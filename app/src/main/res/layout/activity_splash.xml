@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SplashActivity">
+
+    <!-- Container -->
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        >
+
+        <!-- Heading -->
+        <LinearLayout
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quran App"
+                android:textSize="28dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/primary2"
+                android:fontFamily="@font/poppins_bold"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Learn Quran and\nRecite once everyday"
+                android:textSize="18dp"
+                android:textColor="@color/text"
+                android:fontFamily="@font/poppins_regular"
+                android:textAlignment="center"
+                />
+
+        </LinearLayout>
+
+        <!-- Jumbotron -->
+        <RelativeLayout
+            android:id="@+id/jumbotron"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_marginTop="30dp"
+            >
+
+            <ImageView
+                android:layout_width="314dp"
+                android:layout_height="450dp"
+                android:src="@drawable/quran_getting_started"
+                android:layout_centerHorizontal="true"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGetStarted"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:text="Get Started"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:backgroundTint="#F9B091"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingVertical="16dp"
+                android:background="@drawable/round_button"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

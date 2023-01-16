@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/qurans"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="30dp"
+    tools:context=".Fragments.QuranFragment">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="25dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <!-- Menu and App's Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Menu Icon -->
+            <ImageView
+                android:id="@+id/menuSidebar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu"
+                android:layout_gravity="center_vertical"
+                />
+
+            <!-- App Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quran App"
+                android:textColor="@color/primary2"
+                android:textSize="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <!-- Search Icon -->
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <!-- Heading -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <!-- Salam -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Assalamualaikum"
+            android:textColor="@color/text"
+            android:textSize="18dp"
+            android:fontFamily="@font/poppins_medium"
+            />
+
+        <!-- User Name -->
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farhan Augustiansyah"
+            android:textColor="@color/secondary"
+            android:textSize="25dp"
+            android:fontFamily="@font/poppins_semibold"
+            />
+
+    </LinearLayout>
+
+    <!-- Latest Read -->
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Banner -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/quran_latest"
+            />
+
+        <LinearLayout
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/quran_read"
+                    android:layout_marginRight="8dp"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <TextView
+                    android:text="Last Read"
+                    android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/surahName"
+                    android:text="Al-Fatiah"
+                    android:textSize="18dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/surahAyahNumber"
+                    android:text="Ayah No: 1"
+                    android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Surahs Section -->
+<!--    <FrameLayout-->
+<!--        android:id="@+id/sectionLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content" />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_surahs" />
+
+</LinearLayout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bookmark"
+    android:layout_marginHorizontal="30dp"
+    tools:context=".Fragments.BookmarkFragment"
+    android:orientation="vertical"
+    >
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="25dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <!-- Menu and App's Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Menu Icon -->
+            <ImageView
+                android:id="@+id/menuSidebar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu"
+                android:layout_gravity="center_vertical"
+                />
+
+            <!-- App Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bookmarks"
+                android:textColor="@color/primary2"
+                android:textSize="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <!-- Search Icon -->
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <!-- Add New Collection -->
+    <RelativeLayout
+        android:id="@+id/header_add_collection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="-15dp"
+        >
+
+        <!-- Header Add New Collection -->
+        <LinearLayout
+            android:id="@+id/btn_add_collection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Menu Icon -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_folder_plus"
+                android:layout_gravity="center_vertical"
+                />
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add new collection"
+                android:textColor="@color/primary2"
+                android:textSize="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <!-- Sort Icon -->
+        <ImageView
+            android:id="@+id/btn_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_sort"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <!-- Collections -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <androidx.recyclerview.widget.RecyclerView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rv_collections" />
+
+    </ScrollView>
+
+</LinearLayout>

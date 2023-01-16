@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ayahItem"
+    android:orientation="vertical"
+    >
+
+    <!-- Header Ayah -->
+    <RelativeLayout
+        android:background="@drawable/round_small"
+        android:layout_width="match_parent"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="15dp"
+        android:layout_height="wrap_content">
+
+        <!-- Style Number -->
+        <LinearLayout
+           android:layout_width="35dp"
+           android:background="@drawable/round_full_number"
+           android:backgroundTint="@color/primary1"
+           android:layout_height="35dp"
+           android:layout_centerVertical="true"
+           >
+
+           <!-- Number -->
+           <TextView
+               android:id="@+id/surahMeaning"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="1"
+               android:textSize="16dp"
+               android:textAlignment="center"
+               android:layout_gravity="center_vertical"
+               android:gravity="center_horizontal"
+               android:textColor="@color/white"
+               android:fontFamily="@font/poppins_medium"
+               />
+
+       </LinearLayout>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            >
+
+            <!-- Button Share -->
+            <ImageView
+                android:id="@+id/btn_share"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_share"
+                android:layout_marginRight="15dp"
+                />
+
+            <!-- Button Share -->
+            <ImageView
+                android:id="@+id/btn_play"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_play"
+                android:layout_marginRight="15dp"
+                />
+
+            <!-- Button Share -->
+            <ImageView
+                android:id="@+id/btn_bookmark"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_bookmark_detail"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Ayah -->
+    <RelativeLayout
+        android:paddingVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_ayah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="َﻦﻳِمَلٰعْلا ِّبَر ِهَّلِل ُدْمَحْلا"
+            android:textSize="18dp"
+            android:fontFamily="@font/amiri_bold"
+            android:textColor="@color/secondary"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <!-- Arti Ayah -->
+    <TextView
+        android:id="@+id/tv_arti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="َ[All] praise is [due] to Allah, Lord of the worlds -"
+        android:textSize="16dp"
+        android:textColor="@color/secondary"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_alignParentRight="true"
+        />
+
+</LinearLayout>

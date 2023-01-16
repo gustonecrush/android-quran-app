@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="30dp"
+    tools:context=".Activity.SurahDetailActivity">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="25dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <!-- Menu and App's Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Menu Icon -->
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:layout_gravity="center_vertical"
+                />
+
+            <!-- Surah Name -->
+            <TextView
+                android:id="@+id/surahNameInDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Al-Fatiah"
+                android:textColor="@color/primary2"
+                android:textSize="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <!-- Search Icon -->
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <!-- Jumbotron & Ayahs -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Jumbotron -->
+            <RelativeLayout
+                android:layout_marginTop="-5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Card Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:src="@drawable/quran_detail"
+                    />
+
+                <!-- Surah Detail -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_white"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <!-- Surah Name -->
+                        <TextView
+                            android:id="@+id/surahName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Al-Fatiah"
+                            android:textSize="26dp"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/poppins_medium"
+                            />
+
+                        <!-- Surah Meaning -->
+                        <TextView
+                            android:id="@+id/surahMeaning"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="The Opening"
+                            android:textSize="16dp"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/poppins_medium"
+                            />
+
+                    </LinearLayout>
+
+                    <!-- Surah Placement and Verses Total -->
+                    <TextView
+                        android:id="@+id/surahPlacementAndVerses"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MECCAN • 7 VERSES"
+                        android:textSize="14dp"
+                        android:paddingTop="10dp"
+                        android:textAllCaps="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_medium"
+                        />
+
+                    <!-- Bismillah Sentence -->
+                    <ImageView
+                        android:layout_marginTop="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/bismillah"
+                        />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- Ayahs -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rv_ayahs" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
