@@ -46,4 +46,14 @@ class SurahAdapter(private val list: ArrayList<Surahs>, private val onSurahClick
 
     override fun getItemCount(): Int = list.size
 
+    fun addList(items: ArrayList<Surahs>) {
+        list.addAll(items)
+        notifyDataSetChanged()
+    }
+
+    fun clear() {
+        list.clear()
+        notifyDataSetChanged()
+    }
+
 }

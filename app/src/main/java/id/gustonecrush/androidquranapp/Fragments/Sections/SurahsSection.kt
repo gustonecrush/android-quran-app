@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import id.gustonecrush.androidquranapp.Activity.SurahDetailActivity
 import id.gustonecrush.androidquranapp.R
 import id.gustonecrush.androidquranapp.Retrofit.API.QuranAPI
@@ -27,11 +28,13 @@ import retrofit2.Response
  * Use the [SurahsSection.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SurahsSection : Fragment(), OnSurahClickListener {
+class SurahsSection : Fragment(), OnSurahClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private val list = ArrayList<Surahs>()
     private lateinit var layoutManager: RecyclerView.LayoutManager
-    private lateinit var adapter: RecyclerView.Adapter<SurahAdapter.SurahViewHolder>
+    private lateinit var adapter: SurahAdapter
+
+    private var isLoading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,18 +51,36 @@ class SurahsSection : Fragment(), OnSurahClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getSurahs()
+        layoutManager = LinearLayoutManager(context)
+        swipeRefresh.setOnRefreshListener(this)
+        setupRecyclerView()
+        getSurahs(false)
+        rv_surahs.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if(!isLoading) {
+                    getSurahs(false)
+                }
+
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
     }
 
-    private fun getSurahs() {
+    private fun getSurahs(isOnRefresh: Boolean) {
+        isLoading = true
+        if (!isOnRefresh) progressBar.visibility = View.VISIBLE
+
         val retro = Retrofit.getRetroData().create(QuranAPI::class.java)
         retro.getQuran().enqueue(object: Callback<QuranResponse> {
             override fun onResponse(call: Call<QuranResponse>, response: Response<QuranResponse>) {
-                response.body()?.data?.let { list.addAll(it) }
-                rv_surahs.apply {
-                    layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL ,false)
-                    adapter       = SurahAdapter(list, this@SurahsSection)
+                val listResponse = response.body()?.data
+                if (listResponse != null) {
+                    adapter.addList(listResponse)
                 }
+
+                progressBar.visibility = View.INVISIBLE
+                isLoading = false
+                swipeRefresh.isRefreshing = false
             }
 
             override fun onFailure(call: Call<QuranResponse>, t: Throwable) {
@@ -67,6 +88,13 @@ class SurahsSection : Fragment(), OnSurahClickListener {
             }
 
         })
+    }
+
+    private fun setupRecyclerView() {
+        rv_surahs.setHasFixedSize(true)
+        rv_surahs.layoutManager = layoutManager
+        adapter = SurahAdapter(list, this@SurahsSection)
+        rv_surahs.adapter = adapter
     }
 
     override fun onSurahItemClicked(position: Int) {
@@ -78,6 +106,11 @@ class SurahsSection : Fragment(), OnSurahClickListener {
         intent.putExtra("verses", list[position]?.ayahCount)
 
         startActivity(intent)
+    }
+
+    override fun onRefresh() {
+        adapter.clear()
+        getSurahs(true)
     }
 
 }
