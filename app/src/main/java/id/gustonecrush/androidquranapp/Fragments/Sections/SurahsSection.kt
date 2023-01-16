@@ -1,33 +1,40 @@
 package id.gustonecrush.androidquranapp.Fragments.Sections
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import id.gustonecrush.androidquranapp.Activity.SurahDetailActivity
 import id.gustonecrush.androidquranapp.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import id.gustonecrush.androidquranapp.Retrofit.API.QuranAPI
+import id.gustonecrush.androidquranapp.Retrofit.Adapters.SurahAdapter
+import id.gustonecrush.androidquranapp.Retrofit.Helper.OnSurahClickListener
+import id.gustonecrush.androidquranapp.Retrofit.Responses.QuranResponse
+import id.gustonecrush.androidquranapp.Retrofit.Responses.Surahs
+import id.gustonecrush.androidquranapp.Retrofit.Retrofit
+import kotlinx.android.synthetic.main.fragment_surahs_section.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * A simple [Fragment] subclass.
  * Use the [SurahsSection.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SurahsSection : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SurahsSection : Fragment(), OnSurahClickListener {
+
+    private val list = ArrayList<Surahs>()
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+    private lateinit var adapter: RecyclerView.Adapter<SurahAdapter.SurahViewHolder>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -38,23 +45,39 @@ class SurahsSection : Fragment() {
         return inflater.inflate(R.layout.fragment_surahs_section, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SurahsSection.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SurahsSection().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        getSurahs()
+    }
+
+    private fun getSurahs() {
+        val retro = Retrofit.getRetroData().create(QuranAPI::class.java)
+        retro.getQuran().enqueue(object: Callback<QuranResponse> {
+            override fun onResponse(call: Call<QuranResponse>, response: Response<QuranResponse>) {
+                response.body()?.data?.let { list.addAll(it) }
+                rv_surahs.apply {
+                    layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL ,false)
+                    adapter       = SurahAdapter(list, this@SurahsSection)
                 }
             }
+
+            override fun onFailure(call: Call<QuranResponse>, t: Throwable) {
+                Log.d("Surah", "onFailure: " + t.message)
+            }
+
+        })
     }
+
+    override fun onSurahItemClicked(position: Int) {
+        val intent = Intent(activity, SurahDetailActivity::class.java)
+        intent.putExtra("number", list[position]?.number)
+        intent.putExtra("name", list[position]?.asma?.en?.short)
+        intent.putExtra("mean", list[position]?.asma?.translation?.en)
+        intent.putExtra("type", list[position]?.type?.en)
+        intent.putExtra("verses", list[position]?.ayahCount)
+
+        startActivity(intent)
+    }
+
 }

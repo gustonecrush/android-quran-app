@@ -55,7 +55,7 @@ data class Asma(
     val id: DataAsma? = null,
 
     @field:SerializedName("translation")
-    val translation: DataAsma? = null,
+    val translation: DataTranslation? = null,
 
 )
 

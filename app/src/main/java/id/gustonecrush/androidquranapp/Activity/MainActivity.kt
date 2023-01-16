@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
             when(it.itemId) {
                 R.id.qurans   -> replaceFragment(QuranFragment())
-                R.id.idea     -> replaceFragment(IdeaFragment())
+                R.id.insight  -> replaceFragment(IdeaFragment())
                 R.id.pray     -> replaceFragment(PrayFragment())
                 R.id.shalat   -> replaceFragment(SholatFragment())
                 R.id.bookmark -> replaceFragment(BookmarkFragment())

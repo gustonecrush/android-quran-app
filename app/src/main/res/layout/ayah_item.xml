@@ -4,6 +4,9 @@
     android:layout_height="wrap_content"
     android:id="@+id/ayahItem"
     android:orientation="vertical"
+    android:background="@drawable/border"
+    android:paddingBottom="20dp"
+    android:layout_marginBottom="20dp"
     >
 
     <!-- Header Ayah -->
@@ -25,7 +28,7 @@
 
            <!-- Number -->
            <TextView
-               android:id="@+id/surahMeaning"
+               android:id="@+id/tv_number_of_surah"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:text="1"
@@ -99,7 +102,7 @@
 
     <!-- Arti Ayah -->
     <TextView
-        android:id="@+id/tv_arti"
+        android:id="@+id/tv_meaning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="َ[All] praise is [due] to Allah, Lord of the worlds -"

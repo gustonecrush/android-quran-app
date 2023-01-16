@@ -1,17 +1,28 @@
 package id.gustonecrush.androidquranapp.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
+import id.gustonecrush.androidquranapp.Activity.SurahDetailActivity
+import id.gustonecrush.androidquranapp.Fragments.Sections.HijbSection
+import id.gustonecrush.androidquranapp.Fragments.Sections.PageSection
+import id.gustonecrush.androidquranapp.Fragments.Sections.ParaSection
+import id.gustonecrush.androidquranapp.Fragments.Sections.SurahsSection
 import id.gustonecrush.androidquranapp.R
 import id.gustonecrush.androidquranapp.Retrofit.API.QuranAPI
 import id.gustonecrush.androidquranapp.Retrofit.Adapters.SurahAdapter
+import id.gustonecrush.androidquranapp.Retrofit.Adapters.VPAdapter
 import id.gustonecrush.androidquranapp.Retrofit.Helper.OnSurahClickListener
 import id.gustonecrush.androidquranapp.Retrofit.Responses.QuranResponse
 import id.gustonecrush.androidquranapp.Retrofit.Responses.Surahs
@@ -26,11 +37,10 @@ import retrofit2.Response
  * Use the [QuranFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class QuranFragment : Fragment(), OnSurahClickListener {
+class QuranFragment : Fragment() {
 
-    private val list = ArrayList<Surahs>()
-    private lateinit var layoutManager: LayoutManager
-    private lateinit var adapter: RecyclerView.Adapter<SurahAdapter.SurahViewHolder>
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,29 +55,19 @@ class QuranFragment : Fragment(), OnSurahClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getSurahs()
-    }
 
-    private fun getSurahs() {
-        val retro = Retrofit.getRetroData().create(QuranAPI::class.java)
-        retro.getQuran().enqueue(object: Callback<QuranResponse> {
-            override fun onResponse(call: Call<QuranResponse>, response: Response<QuranResponse>) {
-                response.body()?.data?.let { list.addAll(it) }
-                rv_surahs.apply {
-                    layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL ,false)
-                    adapter       = SurahAdapter(list, this@QuranFragment)
-                }
-            }
+        tabLayout = tablayout
+        viewPager = section_layout
 
-            override fun onFailure(call: Call<QuranResponse>, t: Throwable) {
-                Log.d("Surah", "onFailure: " + t.message)
-            }
+        tabLayout.setupWithViewPager(viewPager)
 
-        })
-    }
+        val vpAdapter: VPAdapter = VPAdapter((activity as AppCompatActivity).supportFragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
+        vpAdapter.addFragment(SurahsSection(), "Surah")
+        vpAdapter.addFragment(ParaSection(), "Para")
+        vpAdapter.addFragment(PageSection(), "Page")
+        vpAdapter.addFragment(HijbSection(), "Hijb")
 
-    override fun onSurahItemClicked(position: Int) {
-        TODO("Not yet implemented")
+        viewPager.adapter = vpAdapter
     }
 
 }

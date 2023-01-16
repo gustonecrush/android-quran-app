@@ -150,7 +150,7 @@
 
                 <TextView
                     android:id="@+id/surahAyahNumber"
-                    android:text="Ayah No: 1"
+                    android:text="Ayah No : 1"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/white"
@@ -164,16 +164,51 @@
 
     </RelativeLayout>
 
-    <!-- Surahs Section -->
-<!--    <FrameLayout-->
-<!--        android:id="@+id/sectionLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content" />-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:theme="@style/TabLayoutStyle"
+        android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Surah"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Para"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Page"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hijb"
+            />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- Surahs Section -->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/section_layout"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_surahs" />
+        android:layout_height="wrap_content" />
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/rv_surahs" />-->
 
 </LinearLayout>

@@ -26,7 +26,7 @@ class SurahAdapter(private val list: ArrayList<Surahs>, private val onSurahClick
                         tv_number_of_surah.text = numberOfSurah.toString()
                         tv_name_of_surah.text   = nameOfSurah
                         tv_type_of_surah.text   = typeOfSurah
-                        tv_verses_of_surah.text = versesOfSurah.toString()
+                        tv_verses_of_surah.text = versesOfSurah.toString() + " VERSES"
                         tv_name_of_surah_in_arab.text = nameOfSurahInArab
                     }
                 }
