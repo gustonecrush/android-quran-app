@@ -18,6 +18,8 @@ import id.gustonecrush.androidquranapp.Retrofit.Helper.OnSurahClickListener
 import id.gustonecrush.androidquranapp.Retrofit.Responses.QuranResponse
 import id.gustonecrush.androidquranapp.Retrofit.Responses.Surahs
 import id.gustonecrush.androidquranapp.Retrofit.Retrofit
+import id.gustonecrush.androidquranapp.Storage.SharedPrefManager
+import kotlinx.android.synthetic.main.activity_initialized.*
 import kotlinx.android.synthetic.main.fragment_surahs_section.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -104,6 +106,8 @@ class SurahsSection : Fragment(), OnSurahClickListener, SwipeRefreshLayout.OnRef
         intent.putExtra("mean", list[position]?.asma?.translation?.en)
         intent.putExtra("type", list[position]?.type?.en)
         intent.putExtra("verses", list[position]?.ayahCount)
+
+        SharedPrefManager.getInstance(requireContext()).saveSurah(list[position]?.asma?.en?.short!!)
 
         startActivity(intent)
     }

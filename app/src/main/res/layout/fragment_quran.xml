@@ -139,7 +139,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/surahName"
+                    android:id="@+id/tv_surah_name_latest_read"
                     android:text="Al-Fatiah"
                     android:textSize="18dp"
                     android:layout_gravity="center_vertical"

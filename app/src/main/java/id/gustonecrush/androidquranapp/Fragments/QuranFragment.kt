@@ -1,5 +1,6 @@
 package id.gustonecrush.androidquranapp.Fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -27,6 +28,7 @@ import id.gustonecrush.androidquranapp.Retrofit.Helper.OnSurahClickListener
 import id.gustonecrush.androidquranapp.Retrofit.Responses.QuranResponse
 import id.gustonecrush.androidquranapp.Retrofit.Responses.Surahs
 import id.gustonecrush.androidquranapp.Retrofit.Retrofit
+import id.gustonecrush.androidquranapp.Storage.SharedPrefManager
 import kotlinx.android.synthetic.main.fragment_quran.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,6 +57,18 @@ class QuranFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val prefs = activity?.getSharedPreferences("my_shared_preff", Context.MODE_PRIVATE)
+        val name  = prefs?.getString("name", "Default Name")
+        val surah = prefs?.getString("surah", null)
+
+        username.text = name
+
+        if(surah == null) {
+            tv_surah_name_latest_read.text = "Al-Faatiah"
+        } else {
+            tv_surah_name_latest_read.text = surah
+        }
 
         tabLayout = tablayout
         viewPager = section_layout
