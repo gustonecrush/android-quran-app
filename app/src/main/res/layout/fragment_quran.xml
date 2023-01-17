@@ -91,7 +91,8 @@
 
     <!-- Latest Read -->
     <RelativeLayout
-        android:layout_marginTop="20dp"
+        android:id="@+id/btn_last_read"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -149,7 +150,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/surahAyahNumber"
+                    android:id="@+id/tv_ayah"
                     android:text="Ayah No : 1"
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"

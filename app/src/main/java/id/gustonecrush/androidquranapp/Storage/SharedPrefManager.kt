@@ -17,11 +17,29 @@ class SharedPrefManager private constructor(private val mCtx: Context) {
             return sharedPreferences.getString("surah", null)!!
         }
 
-    fun saveSurah(surah: String) {
+    val ayah: String
+        get() {
+            val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+            return sharedPreferences.getString("ayah", null)!!
+        }
+
+    fun saveSurah(surah: String, surahNumber: Int, type: String, ayahCount: Int, mean: String) {
         val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
         editor.putString("surah", surah)
+        editor.putInt("surahNumber", surahNumber)
+        editor.putString("type", type)
+        editor.putInt("ayahCount", ayahCount)
+        editor.putString("mean", mean)
+        editor.apply()
+    }
+
+    fun saveAyah(ayah: Int) {
+        val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        editor.putInt("ayah", ayah)
         editor.apply()
     }
 

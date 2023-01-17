@@ -1,5 +1,7 @@
 package id.gustonecrush.androidquranapp.Retrofit.Adapters
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -12,11 +14,12 @@ import id.gustonecrush.androidquranapp.R
 import id.gustonecrush.androidquranapp.Retrofit.Helper.OnAyahClickListener
 import id.gustonecrush.androidquranapp.Retrofit.Responses.Ayahs
 import id.gustonecrush.androidquranapp.Retrofit.Responses.Surahs
+import id.gustonecrush.androidquranapp.Storage.SharedPrefManager
 import kotlinx.android.synthetic.main.ayah_item.*
 import kotlinx.android.synthetic.main.ayah_item.view.*
 import java.io.IOException
 
-class AyahAdapter(private val list: ArrayList<Ayahs>, private val onAyahClickListener: OnAyahClickListener): RecyclerView.Adapter<AyahAdapter.AyahViewHolder>() {
+class AyahAdapter(private val list: ArrayList<Ayahs>, private val onAyahClickListener: OnAyahClickListener, private val context: Context): RecyclerView.Adapter<AyahAdapter.AyahViewHolder>() {
 
     private lateinit var mediaPlayer: MediaPlayer
 
@@ -47,12 +50,15 @@ class AyahAdapter(private val list: ArrayList<Ayahs>, private val onAyahClickLis
         holder.itemView.setOnClickListener {
             onAyahClickListener.onAyahItemClicked(position)
         }
+
         holder.itemView.btn_play.setOnClickListener {
             val bundle = Bundle()
+            SharedPrefManager.getInstance(context).saveAyah(list[position]?.number?.insurah!!)
             holder.itemView.btn_play.visibility = View.GONE
             holder.itemView.btn_pause.visibility = View.VISIBLE
             playAyah(list[position]?.audio?.url, list[position]?.number?.insurah)
         }
+
         holder.itemView.btn_pause.setOnClickListener {
             if (mediaPlayer.isPlaying()) {
                 // pausing the media player if media player

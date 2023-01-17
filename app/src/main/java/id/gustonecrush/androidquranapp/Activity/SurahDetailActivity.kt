@@ -30,6 +30,7 @@ import java.io.IOException
 class SurahDetailActivity : AppCompatActivity(), OnAyahClickListener ,SwipeRefreshLayout.OnRefreshListener {
 
     private var numberOfSurah: Int? = null
+    private lateinit var mediaPlayer: MediaPlayer
 
     private val list = ArrayList<Ayahs>()
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -108,7 +109,7 @@ class SurahDetailActivity : AppCompatActivity(), OnAyahClickListener ,SwipeRefre
     private fun setupRecyclerView() {
         rv_ayahs.setHasFixedSize(true)
         rv_ayahs.layoutManager = layoutManager
-        adapter = AyahAdapter(list, this@SurahDetailActivity)
+        adapter = AyahAdapter(list, this@SurahDetailActivity, this)
         rv_ayahs.adapter = adapter
     }
 

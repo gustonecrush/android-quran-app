@@ -107,7 +107,7 @@ class SurahsSection : Fragment(), OnSurahClickListener, SwipeRefreshLayout.OnRef
         intent.putExtra("type", list[position]?.type?.en)
         intent.putExtra("verses", list[position]?.ayahCount)
 
-        SharedPrefManager.getInstance(requireContext()).saveSurah(list[position]?.asma?.en?.short!!)
+        SharedPrefManager.getInstance(requireContext()).saveSurah(list[position]?.asma?.en?.short!!, list[position]?.number!!, list[position]?.type?.en!!, list[position]?.ayahCount!!, list[position]?.asma?.translation?.en!!)
 
         startActivity(intent)
     }
